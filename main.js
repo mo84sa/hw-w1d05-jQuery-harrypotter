@@ -1,3 +1,7 @@
+
+
+
+
 var hogwarts = {
   location: 'Scotland',
   houses: [
@@ -91,12 +95,92 @@ var hogwarts = {
 $(document).ready(function(){
   /* DO YOUR CODE HERE */
 
-  // Guidance:  (Feel free to ignore this).
-
-  /* Look at the image of the goal in the README!  What do you see?
+  //House Name
+  var hName = []
+	    hogwarts.houses.forEach(function(house) {
+	        hName.push(house.name);
+      })
+      //house Colores
+	    var hColor = []
+	    hogwarts.houses.forEach(function(house) {
+        hColor.push(house.colors);
+      })
+      //house valus
+	    var hValues = []
+	    hogwarts.houses.forEach(function(house) {
+        hValues.push(house.values);
+      })
+      //housw Mascot
+	    var hMascot = []
+	    hogwarts.houses.forEach(function(house) {
+        hMascot.push(house.mascot);
+      })
+      // house Founder
+	    var hFounder = []
+	    hogwarts.houses.forEach(function(house) {
+        hFounder.push(house.founder);
+      })
+      //house student
+	    var hStudent = []
+	    hogwarts.houses.forEach(function(house) {
+        hStudent.push(house.students);
+	    })
+      
+    // all imgs
+	    var hImg = []
+	    hogwarts.houses.forEach(function(house) {
+        hImg.push(house.img);
+      })
+      //Create the names.
+	    var cName = Object.keys(hogwarts.houses[0])
+      
+//append for all house name
+	    for (var i = 0; i < hName.length; i++) {
+        var $section = $('<section/>');
+        $('main').append($section);
+        var $hDiv = $('<div/>');
+        // append house div
+        $($section).append($hDiv);
+        //append house img
+        $($hDiv).append($('<img/>').attr('src', hImg[i]));
+        //append house name
+        $($hDiv).append($('<h2/>').html(hName[i]));
+        //append house founder
+        $($hDiv).append($('<h3/>').html(cName[2]));
+        $($hDiv).append($('<p/>').html(cName[5] + ' - ' + hFounder[i]))
+        $($hDiv).append($('<p/>').html(cName[3] + ' - ' + hMascot[i]))
+        
+        var $uValue = $('<ul/>')
+        for (var hv = 0; hv < hValues[i].length; hv++) {
+          $($uValue).append($('<li/>').html(hValues[i][hv]));
+        }
+        $($hDiv).append($uValue);
+        
+        var $ulColor = $('<ul/>')
+        $($hDiv).append($('<h3/>').html(cName[4]));
+        for (var uc = 0; uc < hColor[i].length; uc++) {
+          $($ulColor).append($('<li/>').html(hColor[i][uc]));
+        }
+        $($hDiv).append($ulColor);
+        
+        var $ulStudent = $('<ul/>')
+        $($hDiv).append($('<h3/>').html(cName[6]));
+        for (var us = 0; us < hStudent[i].length; us++) {
+          $($ulStudent).append($('<li/>').html(hStudent[i][us]));
+        }
+        $($hDiv).append($ulStudent);
+	    }
+	  
+      
+      
+    })
+    
+    // Guidance:  (Feel free to ignore this).
+    
+    /* Look at the image of the goal in the README!  What do you see?
     You can tell that we need to create identical sections for each house that
     that has the same information inside.
-
+    
     One approach could be:
     1.  Access the array that belongs to the 'Houses' key of the object.
     2.  Create a function 'renderHouse' that renders a single house.
@@ -112,6 +196,6 @@ $(document).ready(function(){
     separate function?  You would then call this function on the 
     'students', 'colors' and 'values' arrays.
 
-    For example, a function like createList(title, array).
-  */
-})
+    For example, a function like createList(title, array).*/
+
+
